@@ -31,6 +31,14 @@
 
     <dependencies>
 
+        <!-- Provided dependencies -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>3.0-alpha-1</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- Spring 4 dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
