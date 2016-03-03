@@ -1,10 +1,10 @@
 package com.learn.hr.hrserver.configuration;
 
 
-import com.learn.hr.hrserver.aspects.IAspect;
-import com.learn.hr.hrserver.departments.IDepartment;
-import com.learn.hr.hrserver.employees.IEmployee;
-import com.learn.hr.hrserver.salaries.ISalary;
+import com.learn.hr.hrserver.aspects.AspectApplicable;
+import com.learn.hr.hrserver.departments.DepartmentApplicable;
+import com.learn.hr.hrserver.employees.EmployeeApplicable;
+import com.learn.hr.hrserver.salaries.SalaryApplicable;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
@@ -24,7 +24,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 //Defines the profile used in order for this configuration class to be loaded eg "development"
 @Profile(HRConstants.DEVELOPMENT_PROFILE)
 //Activates component scanning for classes that are in packages where the listed classes belong
-@ComponentScan(basePackageClasses = {IDepartment.class, ISalary.class, IEmployee.class, IAspect.class})
+@ComponentScan(basePackageClasses = {DepartmentApplicable.class, SalaryApplicable.class, EmployeeApplicable.class, AspectApplicable.class})
 //Enables support for handling components marked with AspectJ's @Aspect annotation.
 @EnableAspectJAutoProxy
 public class HRConfigurationDev{

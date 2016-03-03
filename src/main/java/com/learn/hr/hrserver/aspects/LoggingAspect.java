@@ -9,7 +9,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
  * Date: 26/02/16.
  * Time: 20:04
  */
-public interface LoggingAspect extends IAspect {
+public interface LoggingAspect {
 
 
     /**

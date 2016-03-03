@@ -16,6 +16,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 //Marks this class to be a spring bean.
 @Component
+//Marker annotation
+@AspectApplicable
 public class LoggingAspectImpl implements LoggingAspect {
 
     /**
