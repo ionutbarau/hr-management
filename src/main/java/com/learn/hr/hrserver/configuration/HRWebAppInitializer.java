@@ -15,6 +15,8 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * SpringServletContainerInitializer seeks any classes that implement WebApplicationInitializer and delegates to it for configuration.
  * AbstractAnnotationConfigDispatcherServletInitializer is an implementation of WebApplicationInitializer, so any class that extends it
  * will be automatically discovered when deployed in Servlet 3.0 container and will be used for configuring the servlet context.
+ *
+ * However web.xml is still needed for other configuration like session-timeout or error-page.
  */
 public class HRWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
