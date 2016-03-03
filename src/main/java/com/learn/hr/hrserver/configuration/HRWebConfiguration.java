@@ -18,17 +18,22 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * Date: 01/03/16.
  * Time: 22:29
  *
- * Spring web mvc configuration class. (No need for profile dependent config classes).
+ * Spring web mvc configuration class. (No need for profile dependent config classes here).
+ * WebMvcConfigurerAdapter is extended in order to implement configureDefaultServletHandling in order to forward requests for  static resources to the
+ * container's default servlet.
  */
 //Marks the class as Spring config Java class (used instead of xml config)
 @Configuration
+//Enables Spring MVC (It enables support for @Controller-annotated classes that use @RequestMapping to map incoming requests to a certain method)
 @EnableWebMvc
+//Activates component scanning for classes that are in packages where the listed classes belong
 @ComponentScan(basePackageClasses = {IDepartment.class, IEmployee.class, ISalary.class})
 public class HRWebConfiguration extends WebMvcConfigurerAdapter {
 
     /**
-     * JSP view resolver.
-     * @return
+     * JSP view resolver. If no view resolver is configured, Spring will default to using BeanNameViewResolver, a view resolver that resolves views by looking for beans whose
+     * ID matches the view name and whose class implements the View interface
+     * @return a view resolver instance
      */
     @Bean
     public ViewResolver viewResolver() {
@@ -41,7 +46,7 @@ public class HRWebConfiguration extends WebMvcConfigurerAdapter {
     }
 
     /**
-     * By enabling DefaultServletHandlerConfigurer, DispatcherServlet forwards requests to static resources to
+     * By enabling DefaultServletHandlerConfigurer, DispatcherServlet forwards requests for static resources to
      * the container's default servlet.
      * @param configurer
      */

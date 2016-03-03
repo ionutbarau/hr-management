@@ -23,7 +23,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @Profile(HRConstants.PRODUCTION_PROFILE)
 //Activates component scanning for classes that are in packages where the listed classes belong
 @ComponentScan(basePackageClasses = {IDepartment.class, ISalary.class, IEmployee.class, IAspect.class})
-//Enables Spring AOP
+//Enables support for handling components marked with AspectJ's @Aspect annotation.
 @EnableAspectJAutoProxy
 public class HRConfigurationProd{
 

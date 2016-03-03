@@ -28,7 +28,7 @@ public class HRWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
     }
 
     /**
-     * Used to load web specific application context through web specific configuration classes that holds only web tier spring beans.
+     * Used to load web specific application context through web specific configuration classes that holds only web tier spring beans (@Controller, view resolver, handler mapping etc)
      * @return array of web config classes
      */
     @Override
