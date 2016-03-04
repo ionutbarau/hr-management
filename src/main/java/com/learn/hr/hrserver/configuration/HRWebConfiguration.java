@@ -1,7 +1,9 @@
 package com.learn.hr.hrserver.configuration;
 
+import com.learn.hr.hrserver.aspects.AspectApplicable;
 import com.learn.hr.hrserver.departments.DepartmentApplicable;
 import com.learn.hr.hrserver.employees.EmployeeApplicable;
+import com.learn.hr.hrserver.home.HomeApplicable;
 import com.learn.hr.hrserver.salaries.SalaryApplicable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -27,7 +29,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 //Enables Spring MVC (It enables support for @Controller-annotated classes that use @RequestMapping to map incoming requests to a certain method)
 @EnableWebMvc
 //Activates component scanning for classes that are in packages where the listed classes belong
-@ComponentScan(basePackageClasses = {DepartmentApplicable.class, EmployeeApplicable.class, SalaryApplicable.class})
+@ComponentScan(basePackageClasses = {DepartmentApplicable.class, EmployeeApplicable.class, SalaryApplicable.class, HomeApplicable.class, AspectApplicable.class})
 public class HRWebConfiguration extends WebMvcConfigurerAdapter {
 
     /**
