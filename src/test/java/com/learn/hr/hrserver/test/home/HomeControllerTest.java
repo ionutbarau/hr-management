@@ -34,5 +34,6 @@ public class HomeControllerTest {
         HomeControllerImpl homeController = new HomeControllerImpl();
         MockMvc mockMvc = standaloneSetup(homeController).build();
         mockMvc.perform(get("/")).andExpect(view().name("home"));
+        mockMvc.perform(get("/homepage")).andExpect(view().name("home"));
     }
 }

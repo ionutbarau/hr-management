@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @HomeApplicable
 @Controller
+@RequestMapping(value = {"/", "/homepage"})
 public class HomeControllerImpl implements HomeController{
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     @Override
     public String goToHome() {
         return "home";
