@@ -1,5 +1,6 @@
 package com.learn.hr.hrserver.departments;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,25 +11,29 @@ import java.util.List;
 
 /**
  * Created by x01027037 on 03.03.2016.
+ * Te service class implementation for {@link DepartmentService}.
  */
+//Marks the class as being department related.
 @DepartmentApplicable
-@Service("departmentService")
+//Marks the class as being a Spring service
+@Service
 public class DepartmentServiceImpl implements DepartmentService {
 
     private List<Department> departments;
 
+    /**
+     * This method is called upon initialization.
+     */
     @PostConstruct
     public void init(){
-        System.out.println("%%%%%%%%%%%%%%%%%%%%% post construct called");
         departments = new ArrayList<>();
-        Department d1 = new Department();
-        d1.setDepartmentId(1l);
-        d1.setDepartmentName("Department1");
-        Department d2 = new Department();
-        d2.setDepartmentId(2l);
-        d2.setDepartmentName("Department2");
-        departments.add(d1);
-        departments.add(d2);
+        for(int i = 0;i<20; i++){
+            Department d = new Department();
+            d.setDepartmentId(Long.valueOf(i));
+            d.setDepartmentName("Department" + i);
+            departments.add(d);
+        }
+
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.learn.hr.hrserver.home.HomeControllerImpl;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.mockito.stubbing.Answer;
 import org.springframework.mock.env.MockEnvironment;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.view.InternalResourceView;
@@ -33,6 +34,7 @@ public class DepartmentControllerTest {
         List<Department> departmentList = buildDepartments();
         DepartmentService mockDepartmentService = Mockito.mock(DepartmentService.class);
         DepartmentControllerImpl departmentController = new DepartmentControllerImpl(mockDepartmentService);
+        Mockito.when(mockDepartmentService.getDepartments()).thenReturn(departmentList);
         //setSingleView is used when the controller path is the same as the view name. (The mock framework tries to resolve view name coming from controller on its own).
         //Solves javax.servlet.ServletException: Circular view path
         MockMvc mockMvc = standaloneSetup(departmentController).setSingleView(new InternalResourceView("/WEB-INF/views/departments.jsp")).build();
@@ -41,16 +43,42 @@ public class DepartmentControllerTest {
                 andExpect(model().attributeExists("departments"));
     }
 
+    @Test
+    public void testDepartmentsPagination() throws Exception {
+        List<Department> departmentList = buildDepartments();
+        DepartmentService mockDepartmentService = Mockito.mock(DepartmentService.class);
+        Mockito.when(mockDepartmentService.getDepartments()).thenReturn(departmentList);
+        DepartmentControllerImpl departmentController = new DepartmentControllerImpl(mockDepartmentService);
+        //setSingleView is used when the controller path is the same as the view name. (The mock framework tries to resolve view name coming from controller on its own).
+        //Solves javax.servlet.ServletException: Circular view path
+        MockMvc mockMvc = standaloneSetup(departmentController).setSingleView(new InternalResourceView("/WEB-INF/views/departments.jsp")).build();
+
+
+        mockMvc.perform(get("/departments/paging?start=0&count=10")).
+                andExpect(view().name("departments")).
+                andExpect(model().attributeExists("departments")).
+                andExpect(model().attribute("departments",build10Departments()));
+    }
+
     private List<Department> buildDepartments(){
         List<Department> departments = new ArrayList<>();
-        Department d1 = new Department();
-        d1.setDepartmentId(1l);
-        d1.setDepartmentName("Department1");
-        Department d2 = new Department();
-        d2.setDepartmentId(2l);
-        d2.setDepartmentName("Department2");
-        departments.add(d1);
-        departments.add(d2);
+        for(int i = 0;i<20; i++){
+            Department d = new Department();
+            d.setDepartmentId(Long.valueOf(i));
+            d.setDepartmentName("Department" + i);
+            departments.add(d);
+        }
+        return departments;
+    }
+
+    private List<Department> build10Departments(){
+        List<Department> departments = new ArrayList<>();
+        for(int i = 0;i<10; i++){
+            Department d = new Department();
+            d.setDepartmentId(Long.valueOf(i));
+            d.setDepartmentName("Department" + i);
+            departments.add(d);
+        }
         return departments;
     }
 }
