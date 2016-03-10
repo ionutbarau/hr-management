@@ -3,6 +3,8 @@ package com.learn.hr.hrserver.departments;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -10,7 +12,12 @@ import java.io.Serializable;
  */
 public class Department implements Serializable {
 
+    //Java validation API (with hibernate-validator as implementation) annotations
+    @NotNull
     private Long departmentId;
+
+    @NotNull
+    @Size(min = 1)
     private String departmentName;
 
     public Long getDepartmentId() {

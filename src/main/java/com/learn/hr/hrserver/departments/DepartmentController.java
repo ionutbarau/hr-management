@@ -1,6 +1,7 @@
 package com.learn.hr.hrserver.departments;
 
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 
 import java.util.List;
 import java.util.Map;
@@ -15,5 +16,10 @@ public interface DepartmentController {
 
     public String departments(Integer start,Integer count,Map model);
 
+    public String getDepartments(Long id, Map model);
+
+    public String goToAddDepartments();
+
+    public String addDepartment(Department d,Errors errors,Map model);
 
 }

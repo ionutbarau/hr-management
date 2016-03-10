@@ -5,11 +5,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,7 +49,7 @@ public class DepartmentControllerImpl implements DepartmentController {
 
     @RequestMapping(method = RequestMethod.GET,value = "/paging")
     @Override
-    public String departments(@RequestParam(defaultValue = "0",name = "start") Integer start,
+    public String departments(@RequestParam(defaultValue = "0",name = "start") Integer start, //Request parameters like @QueryParam in JAX-RS (?start=0&count=20)
                               @RequestParam(defaultValue = "20",name = "count") Integer count,
                               Map model) {
         List<Department> allDepartments = departmentService.getDepartments();
@@ -55,6 +59,37 @@ public class DepartmentControllerImpl implements DepartmentController {
         }
         model.put("departments", queryDepartments);
         return "departments";
+    }
+
+    //Defines a resource path like @Path in JAX-RS (/department/1)
+    @RequestMapping(value = "/department/{id}")
+    @Override
+    public String getDepartments(@PathVariable(value = "id")Long id,//Defines the path parameter variable like @PathParam in JAX-RS
+                                 Map model) {
+        List<Department> allDepartments = departmentService.getDepartments();
+        model.put("department",allDepartments.get(id.intValue()));
+        return "department";
+    }
+
+    @Override
+    @RequestMapping(value = "/addDepartment",method = RequestMethod.GET)
+    public String goToAddDepartments() {
+        return "addDepartment";
+    }
+
+    @RequestMapping(value = "/addDepartment", method = RequestMethod.POST)
+    @Override
+    public String addDepartment(@Valid Department d, //No need to do mapping because the names of the request params are the same as the names of the fields.@Valid is use to trigger Java validation API
+    Errors errors,Map model) {
+        if(errors.hasErrors()){
+            for (ObjectError er : errors.getAllErrors()){
+                System.out.println(er.getDefaultMessage());
+            }
+            model.put("errors", errors);
+            return "error";
+        }
+        departmentService.addDepartment(d);
+        return "redirect:/departments/department/" + d.getDepartmentId();
     }
 
 

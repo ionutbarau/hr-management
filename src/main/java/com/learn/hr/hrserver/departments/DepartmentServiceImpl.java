@@ -40,4 +40,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     public List<Department> getDepartments() {
         return departments;
     }
+
+    @Override
+    public Department getDepartment(Long id) {
+        return null;
+    }
+
+    @Override
+    public void addDepartment(Department d) {
+        departments.add(d);
+    }
 }

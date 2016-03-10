@@ -113,6 +113,14 @@
             <version>1.0.0</version>
         </dependency>
 
+        <!-- Validation (Java Validation API with hibernate-validator as implemntation) -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.1.3.Final</version>
+        </dependency>
+
+
         <!-- Utils -->
         <!--Used for writing equals and hashcode easier (return EqualsBuilder.reflectionEquals(this, that, "id", "time"))-->
         <dependency>
