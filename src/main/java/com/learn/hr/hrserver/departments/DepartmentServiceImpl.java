@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -34,6 +35,8 @@ public class DepartmentServiceImpl implements DepartmentService {
             departments.add(d);
         }
 
+        Collections.sort(departments);
+
     }
 
     @Override
@@ -43,11 +46,20 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department getDepartment(Long id) {
-        return null;
+        if(id >= departments.size()){
+            return null;
+        }
+        Department key = new Department();
+        key.setDepartmentId(id);
+        int resultKey = Collections.binarySearch(departments,key);
+        return departments.get(resultKey);
     }
 
     @Override
     public void addDepartment(Department d) {
         departments.add(d);
+        //Collections.sort(departments);
     }
+
+
 }

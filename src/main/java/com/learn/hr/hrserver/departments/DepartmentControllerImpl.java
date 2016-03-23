@@ -1,5 +1,7 @@
 package com.learn.hr.hrserver.departments;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -32,6 +34,8 @@ public class DepartmentControllerImpl implements DepartmentController {
 
     /**The department service */
     private DepartmentService departmentService;
+
+    private Logger logger = LoggerFactory.getLogger(DepartmentControllerImpl.class);
 
     //Inject dependencies by type with @Autowired in constructor. (if there are multiple implementations of the same type use @Qualifier to narrow)
     @Autowired

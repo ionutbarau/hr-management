@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * Created by x01027037 on 07.03.2016.
  */
-public class Department implements Serializable {
+public class Department implements Serializable,Comparable<Department> {
 
     //Java validation API (with hibernate-validator as implementation) annotations
     @NotNull
@@ -56,5 +56,10 @@ public class Department implements Serializable {
                 .append(departmentId)
                 .append(departmentName)
                 .toHashCode();
+    }
+
+    @Override
+    public int compareTo(Department o) {
+        return this.getDepartmentId().compareTo(o.getDepartmentId());
     }
 }
