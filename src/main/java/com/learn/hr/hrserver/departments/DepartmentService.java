@@ -11,5 +11,5 @@ public interface DepartmentService {
 
     public Department getDepartment(Long id);
 
-    public void addDepartment(Department d);
+    public boolean addDepartment(Department d);
 }

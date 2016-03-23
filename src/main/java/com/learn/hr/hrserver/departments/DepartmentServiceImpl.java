@@ -56,9 +56,13 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public void addDepartment(Department d) {
+    public boolean addDepartment(Department d) {
+        Department found = getDepartment(d.getDepartmentId());
+        if(found != null){
+            return false;
+        }
         departments.add(d);
-        //Collections.sort(departments);
+        return true;
     }
 
 

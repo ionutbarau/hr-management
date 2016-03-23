@@ -2,6 +2,7 @@ package com.learn.hr.hrserver.departments;
 
 import com.learn.hr.hrserver.error.Rest400Exception;
 import com.learn.hr.hrserver.error.Rest404Exception;
+import com.learn.hr.hrserver.error.Rest409Exception;
 import com.learn.hr.hrserver.error.RestException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,7 +65,10 @@ public class DepartmentRestControllerImpl implements DepartmentRestController {
     @ResponseStatus(HttpStatus.CREATED)
     @Override
     public @ResponseBody Department addDepartment(@RequestBody Department department) {
-        departmentService.addDepartment(department);
+        boolean added = departmentService.addDepartment(department);
+        if(!added){
+            throw new Rest409Exception("Department with id = " + department.getDepartmentId() + " already present !");
+        }
         return department;
     }
 
@@ -74,7 +78,10 @@ public class DepartmentRestControllerImpl implements DepartmentRestController {
         HttpHeaders httpHeaders = new HttpHeaders();
         URI uri = ucb.path("/rest/departments/").path(String.valueOf(department.getDepartmentId())).build().toUri();
         httpHeaders.setLocation(uri);
-        departmentService.addDepartment(department);
+        boolean added = departmentService.addDepartment(department);
+        if(!added){
+            throw new Rest409Exception("Department with id = " + department.getDepartmentId() + " already present !");
+        }
         ResponseEntity<Department> entity = new ResponseEntity<Department>(department,httpHeaders,HttpStatus.CREATED);
         return entity;
     }
@@ -121,6 +128,15 @@ public class DepartmentRestControllerImpl implements DepartmentRestController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public @ResponseBody
     Map<Integer,String> handleBadRequest(Rest400Exception e) {
+        Map<Integer,String> map = new HashMap<>();
+        map.put(e.getHttpStatus().value(),e.getMessage());
+        return map;
+    }
+
+    @ExceptionHandler(Rest409Exception.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public @ResponseBody
+    Map<Integer,String> handleConflict(Rest409Exception e) {
         Map<Integer,String> map = new HashMap<>();
         map.put(e.getHttpStatus().value(),e.getMessage());
         return map;
