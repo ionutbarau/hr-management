@@ -1,4 +1,4 @@
-package com.learn.hr.hrserver.departments;
+package com.learn.hr.hrserver.departments.business;
 
 import java.util.List;
 
@@ -7,5 +7,5 @@ import java.util.List;
  */
 public interface DepartmentService {
 
-    public List<Department> getDepartments();
+     List<Department> getDepartments();
 }

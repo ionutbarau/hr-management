@@ -1,9 +1,9 @@
 package com.learn.hr.hrserver.configuration;
 
-import com.learn.hr.hrserver.aspects.AspectApplicable;
-import com.learn.hr.hrserver.departments.DepartmentApplicable;
-import com.learn.hr.hrserver.employees.EmployeeApplicable;
-import com.learn.hr.hrserver.salaries.SalaryApplicable;
+import com.learn.hr.hrserver.aspects.HRAspect;
+import com.learn.hr.hrserver.departments.business.HRDepartmentBusiness;
+import com.learn.hr.hrserver.employees.business.HREmployeeBusiness;
+import com.learn.hr.hrserver.salaries.business.HRSalaryBusiness;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
@@ -22,10 +22,14 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 //Defines the profile used in order for this configuration class to be loaded eg "development"
 @Profile(HRConstants.PRODUCTION_PROFILE)
 //Activates component scanning for classes that are in packages where the listed classes belong
-@ComponentScan(basePackageClasses = {DepartmentApplicable.class, SalaryApplicable.class, EmployeeApplicable.class, AspectApplicable.class})
+@ComponentScan(basePackageClasses = {HRDepartmentBusiness.class, HRSalaryBusiness.class, HREmployeeBusiness.class, HRAspect.class})
 //Enables support for handling components marked with AspectJ's @Aspect annotation.
 @EnableAspectJAutoProxy
 public class HRConfigurationProd{
+
+    public HRConfigurationProd(){
+        System.out.println("====== Loading PROD configuration ======");
+    }
 
     /**
      * Used for wiring properties with placeholder values eg @Value("${app.title}"). It is not needed if we use SpEL which

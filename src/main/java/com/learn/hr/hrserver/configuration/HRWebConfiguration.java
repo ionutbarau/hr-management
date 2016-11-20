@@ -1,13 +1,10 @@
 package com.learn.hr.hrserver.configuration;
 
-import com.learn.hr.hrserver.aspects.AspectApplicable;
-import com.learn.hr.hrserver.departments.DepartmentApplicable;
-import com.learn.hr.hrserver.employees.EmployeeApplicable;
-import com.learn.hr.hrserver.home.HomeApplicable;
-import com.learn.hr.hrserver.salaries.SalaryApplicable;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import com.learn.hr.hrserver.departments.controllers.HRDepartmentController;
+import com.learn.hr.hrserver.employees.controllers.HREmployeeController;
+import com.learn.hr.hrserver.home.HRHomeController;
+import com.learn.hr.hrserver.salaries.controllers.HRSalaryController;
+import org.springframework.context.annotation.*;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -26,10 +23,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 //Marks the class as Spring config Java class (used instead of xml config)
 @Configuration
-//Enables Spring MVC (It enables support for @Controller-annotated classes that use @RequestMapping to map incoming requests to a certain method)
+//Enables support for handling components marked with AspectJ's @Aspect annotation.
 @EnableWebMvc
 //Activates component scanning for classes that are in packages where the listed classes belong
-@ComponentScan(basePackageClasses = {DepartmentApplicable.class, EmployeeApplicable.class, SalaryApplicable.class, HomeApplicable.class, AspectApplicable.class})
+@ComponentScan(basePackageClasses = {HRHomeController.class, HRDepartmentController.class, HREmployeeController.class, HRSalaryController.class})
 public class HRWebConfiguration extends WebMvcConfigurerAdapter {
 
     /**

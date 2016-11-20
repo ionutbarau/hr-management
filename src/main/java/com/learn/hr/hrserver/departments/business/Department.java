@@ -1,4 +1,4 @@
-package com.learn.hr.hrserver.departments;
+package com.learn.hr.hrserver.departments.business;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

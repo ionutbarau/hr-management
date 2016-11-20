@@ -15,28 +15,28 @@ public interface LoggingAspect {
     /**
      * The advice method is called before the advised (target) method is called.
      */
-    public void logBeforeMethod(JoinPoint jp);
+    void logBeforeMethod(JoinPoint jp);
 
     /**
      * The advice method is called after the advised (target) method returns or throws an exception.
      */
-    public void logAfterMethod(JoinPoint jp);
+    void logAfterMethod(JoinPoint jp);
 
     /**
      * The advice method is called before the advised (target) method returns.
      */
-    public void logAfterMethodReturn(JoinPoint jp);
+    void logAfterMethodReturn(JoinPoint jp);
 
     /**
      * The advice method is called before the advised (target) method throws and exception.
      */
-    public void logAfterMethodException(JoinPoint jp);
+    void logAfterMethodException(JoinPoint jp);
 
     /**
      * The advice method wraps the advised (target) method is called.
      * This method can be used instead of all others because it encapsulates functionality for all of them.
      */
-    public void logAroundMethod(ProceedingJoinPoint jp);
+    Object logAroundMethod(ProceedingJoinPoint jp);
 
 
 

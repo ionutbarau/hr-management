@@ -1,4 +1,4 @@
-package com.learn.hr.hrserver.departments;
+package com.learn.hr.hrserver.departments.controllers;
 
 import org.springframework.ui.Model;
 

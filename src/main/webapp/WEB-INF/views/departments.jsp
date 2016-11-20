@@ -17,6 +17,5 @@ Departments<br/>
 <c:forEach var="dept" items="${departments}">
     <c:out value="${dept.departmentId}"/>-<c:out value="${dept.departmentName}"/> <br/>
 </c:forEach>
-asdadadsd
 </body>
 </html>

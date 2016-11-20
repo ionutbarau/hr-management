@@ -1,4 +1,4 @@
-package com.learn.hr.hrserver.aspects;
+package com.learn.hr.hrserver.departments.business;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,13 +7,14 @@ import java.lang.annotation.Target;
 
 /**
  * User: Ionut Barau (ionutbarau)
- * Project: angular-rest-spring-jpa-server
- * Date: 26/02/16.
- * Time: 22:19
+ * Project: hr-server
+ * Date: 02/03/16.
+ * Time: 21:12
  *
- * Marker annotation for classes which will be AOP aspects.
+ * Marker annotation for department related business classes.
  */
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface AspectApplicable {
+public @interface HRDepartmentBusiness {
 }

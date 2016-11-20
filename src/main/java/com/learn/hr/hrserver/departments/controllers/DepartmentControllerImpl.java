@@ -1,25 +1,23 @@
-package com.learn.hr.hrserver.departments;
+package com.learn.hr.hrserver.departments.controllers;
 
+import com.learn.hr.hrserver.departments.business.Department;
+import com.learn.hr.hrserver.departments.business.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by x01027037 on 07.03.2016.
  */
-//Marks the class as being department related.
-@DepartmentApplicable
+
+//Marks the class as being department controller related.
+@HRDepartmentController
 //Marks the class to be a MVC controller
 @Controller
 //Class level request mapping

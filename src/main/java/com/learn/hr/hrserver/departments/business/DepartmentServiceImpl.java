@@ -1,9 +1,6 @@
-package com.learn.hr.hrserver.departments;
+package com.learn.hr.hrserver.departments.business;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -13,11 +10,15 @@ import java.util.List;
  * Created by x01027037 on 03.03.2016.
  * Te service class implementation for {@link DepartmentService}.
  */
-//Marks the class as being department related.
-@DepartmentApplicable
+//Marks the class as being department business related.
+@HRDepartmentBusiness
 //Marks the class as being a Spring service
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
+
+    public DepartmentServiceImpl(){
+        System.out.println("========= DepartmentServiceImpl instantiated =========");
+    }
 
     private List<Department> departments;
 

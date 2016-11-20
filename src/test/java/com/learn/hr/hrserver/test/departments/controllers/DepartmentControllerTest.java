@@ -1,15 +1,10 @@
-package com.learn.hr.hrserver.test.departments;
+package com.learn.hr.hrserver.test.departments.controllers;
 
-import com.learn.hr.hrserver.departments.Department;
-import com.learn.hr.hrserver.departments.DepartmentController;
-import com.learn.hr.hrserver.departments.DepartmentControllerImpl;
-import com.learn.hr.hrserver.departments.DepartmentService;
-import com.learn.hr.hrserver.home.HomeControllerImpl;
-import org.hamcrest.CoreMatchers;
+import com.learn.hr.hrserver.departments.business.Department;
+import com.learn.hr.hrserver.departments.controllers.DepartmentControllerImpl;
+import com.learn.hr.hrserver.departments.business.DepartmentService;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.mockito.stubbing.Answer;
-import org.springframework.mock.env.MockEnvironment;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.view.InternalResourceView;
 

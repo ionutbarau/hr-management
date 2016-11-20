@@ -1,4 +1,4 @@
-package com.learn.hr.hrserver.employees;
+package com.learn.hr.hrserver.salaries.business;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,9 +11,9 @@ import java.lang.annotation.Target;
  * Date: 02/03/16.
  * Time: 21:13
  *
- * Marker annotation for employee related business classes.
+ * Marker annotation for salary related business classes.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface EmployeeApplicable {
+public @interface HRSalaryBusiness {
 }

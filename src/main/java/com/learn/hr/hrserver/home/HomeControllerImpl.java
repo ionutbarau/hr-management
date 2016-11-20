@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Created by x01027037 on 04.03.2016.
  */
-@HomeApplicable
+@HRHomeController
 @Controller
 @RequestMapping(value = {"/", "/homepage"})
 public class HomeControllerImpl implements HomeController{
