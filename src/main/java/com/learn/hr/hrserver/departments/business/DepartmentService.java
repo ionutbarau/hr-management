@@ -8,4 +8,9 @@ import java.util.List;
 public interface DepartmentService {
 
      List<Department> getDepartments();
+
+     boolean addDepartment(Department d);
+
+     Department getDepartment(Long id);
+
 }

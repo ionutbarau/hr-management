@@ -4,6 +4,7 @@ import com.learn.hr.hrserver.departments.business.Department;
 import com.learn.hr.hrserver.departments.business.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,6 +54,21 @@ public class DepartmentControllerImpl implements DepartmentController {
         }
         model.put("departments", queryDepartments);
         return "departments";
+    }
+
+    @Override
+    public String getDepartments(Long id, Map model) {
+        return null;
+    }
+
+    @Override
+    public String goToAddDepartments() {
+        return null;
+    }
+
+    @Override
+    public String addDepartment(Department d, Errors errors, Map model) {
+        return null;
     }
 
 

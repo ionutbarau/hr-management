@@ -1,9 +1,10 @@
-package com.learn.hr.hrserver.departments;
+package com.learn.hr.hrserver.departments.controllers;
 
+import com.learn.hr.hrserver.departments.business.Department;
+import com.learn.hr.hrserver.departments.business.DepartmentService;
 import com.learn.hr.hrserver.error.Rest400Exception;
 import com.learn.hr.hrserver.error.Rest404Exception;
 import com.learn.hr.hrserver.error.Rest409Exception;
-import com.learn.hr.hrserver.error.RestException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ import java.util.Map;
  * Rest controller for Departments.
  */
 
-@DepartmentApplicable
+@HRDepartmentController
 // Marks the class as being a rest controller
 // If this annotation is applied, there is no need to use message converter annotation @ResponseBody to produce resource representation for client,
 // because Spring will add message conversion capability by default for every handler method.

@@ -1,5 +1,6 @@
 package com.learn.hr.hrserver.departments.controllers;
 
+import com.learn.hr.hrserver.departments.business.Department;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 
@@ -20,6 +21,6 @@ public interface DepartmentController {
 
     public String goToAddDepartments();
 
-    public String addDepartment(Department d,Errors errors,Map model);
+    public String addDepartment(Department d, Errors errors, Map model);
 
 }
