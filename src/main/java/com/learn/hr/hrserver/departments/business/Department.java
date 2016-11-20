@@ -3,14 +3,21 @@ package com.learn.hr.hrserver.departments.business;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
  * Created by x01027037 on 07.03.2016.
  */
-public class Department implements Serializable {
+public class Department implements Serializable,Comparable<Department> {
 
+    //Java validation API (with hibernate-validator as implementation) annotations
+    @NotNull
     private Long departmentId;
+
+    @NotNull
+    @Size(min = 1)
     private String departmentName;
 
     public Long getDepartmentId() {
@@ -49,5 +56,10 @@ public class Department implements Serializable {
                 .append(departmentId)
                 .append(departmentName)
                 .toHashCode();
+    }
+
+    @Override
+    public int compareTo(Department o) {
+        return this.getDepartmentId().compareTo(o.getDepartmentId());
     }
 }
