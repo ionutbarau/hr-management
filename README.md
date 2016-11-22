@@ -1,6 +1,7 @@
 # hr-management
 
-An example of a project which uses Spring, REST, SOAP, JMS, JPA, MYSQL, MongoDB. Some soft of client will be devleloped with Spring MVC in this module
+An example of a project which uses Spring, REST, SOAP, JMS, JPA, MYSQL, MongoDB.
+Some sort of client will be developed with Spring MVC in this module
 
 Another separate client will be developed in AngularJS (hr-client).
 
